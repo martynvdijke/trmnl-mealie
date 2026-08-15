@@ -1,43 +1,34 @@
 <div class="layout layout--col gap">
-  {% if IDX_0.image %}
-  <div class="grid grid--cols-1">
-    <img class="image image-cover image-dither rounded" src="{{ trml.plugin_settings.custom_fields_values.url }}{{ IDX_0.image }}" />
-  </div>
+  {% if error %}
+    <div class="item">
+      <span class="value value--medium">{{ error }}</span>
+    </div>
+  {% else %}
+    {% if image %}
+      <div class="item">
+        <img class="image image-cover image-dither rounded" src="{{ image }}" />
+      </div>
+    {% endif %}
+    <div class="item">
+      <span class="value value--medium">{{ name }}</span>
+      <div class="meta">
+        {% if prep_time %}<span class="label">Prep {{ prep_time }}</span>{% endif %}
+        {% if cook_time %}<span class="label">Cook {{ cook_time }}</span>{% endif %}
+        {% if total_time %}<span class="label">Total {{ total_time }}</span>{% endif %}
+        {% if servings %}<span class="label">{{ servings }} servings</span>{% endif %}
+      </div>
+    </div>
+    {% if ingredients.size > 0 %}
+      <div class="item">
+        <div class="meta">
+          {% for ingredient in ingredients limit: 4 %}
+            <span class="label">{{ ingredient }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
   {% endif %}
-  <div class="item">
-    <div class="meta"></div>
-    <div class="content">
-      <span class="value value--medium">{{ IDX_0.name }}</span>
-    </div>
+  <div class="title_bar">
+    <span class="title">Recipe of the Day</span>
   </div>
-  <div class="col col--start gap">
-    {% if IDX_0.total_time %}
-    <div class="item">
-      <div class="meta"></div>
-      <div class="content">
-        <span class="label">Total time - {{ IDX_0.total_time }}</span>
-      </div>
-    </div>
-    {% endif %}
-    {% if IDX_0.servings %}
-    <div class="item">
-      <div class="meta"></div>
-      <div class="content">
-        <span class="label">Servings - {{ IDX_0.servings }}</span>
-      </div>
-    </div>
-    {% endif %}
-    {% if IDX_0.ingredients.size > 0 %}
-    <div class="item">
-      <div class="meta"></div>
-      <div class="content">
-        <span class="label">{{ IDX_0.ingredients.size }} ingredients</span>
-      </div>
-    </div>
-    {% endif %}
-  </div>
-</div>
-
-<div class="title_bar">
-  <span class="title">Recipe of the Day</span>
 </div>

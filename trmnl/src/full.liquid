@@ -1,95 +1,55 @@
 <div class="layout layout--col gap">
-  {% if IDX_0.image %}
-  <div class="grid grid--cols-1">
-    <img class="image image-cover image-dither rounded" src="{{ trml.plugin_settings.custom_fields_values.url }}{{ IDX_0.image }}" />
-  </div>
+  {% if error %}
+    <div class="item">
+      <div class="content">
+        <span class="value value--medium">{{ error }}</span>
+      </div>
+    </div>
+  {% elsif image %}
+    <div class="item">
+      <img class="image image-cover image-dither rounded" src="{{ image }}" />
+    </div>
   {% endif %}
   <div class="item">
-    <div class="meta"></div>
     <div class="content">
-      <span class="value value--large">{{ IDX_0.name }}</span>
+      <span class="value value--large">{{ name }}</span>
+    </div>
+    {% if description %}
+      <div class="meta">
+        <span class="label">{{ description }}</span>
+      </div>
+    {% endif %}
+    <div class="meta">
+      {% if prep_time %}<span class="label">Prep {{ prep_time }}</span>{% endif %}
+      {% if cook_time %}<span class="label">Cook {{ cook_time }}</span>{% endif %}
+      {% if total_time %}<span class="label">Total {{ total_time }}</span>{% endif %}
+      {% if servings %}<span class="label">{{ servings }} servings</span>{% endif %}
+      {% if rating %}<span class="label">★ {{ rating }}</span>{% endif %}
     </div>
   </div>
-  {% if IDX_0.description %}
-  <div class="item">
-    <div class="meta"></div>
-    <div class="content">
-      <span class="value value--small">{{ IDX_0.description }}</span>
-    </div>
-  </div>
-  {% endif %}
-  <div class="hr"></div>
-  <div class="grid grid--cols-2">
-    <div class="col col--start gap">
-      {% if IDX_0.servings %}
-      <div class="item">
-        <div class="meta"></div>
-        <div class="content">
-          <span class="label">Servings</span>
-          <span class="value value--medium">{{ IDX_0.servings }}</span>
-        </div>
-      </div>
-      {% endif %}
-      {% if IDX_0.total_time %}
-      <div class="item">
-        <div class="meta"></div>
-        <div class="content">
-          <span class="label">Total time</span>
-          <span class="value value--medium">{{ IDX_0.total_time }}</span>
-        </div>
-      </div>
-      {% endif %}
-    </div>
-    <div class="col col--start gap">
-      {% if IDX_0.prep_time %}
-      <div class="item">
-        <div class="meta"></div>
-        <div class="content">
-          <span class="label">Prep time</span>
-          <span class="value value--medium">{{ IDX_0.prep_time }}</span>
-        </div>
-      </div>
-      {% endif %}
-      {% if IDX_0.cook_time %}
-      <div class="item">
-        <div class="meta"></div>
-        <div class="content">
-          <span class="label">Cook time</span>
-          <span class="value value--medium">{{ IDX_0.cook_time }}</span>
-        </div>
-      </div>
-      {% endif %}
-    </div>
-  </div>
-  <div class="hr"></div>
-  {% if IDX_0.ingredients.size > 0 %}
-  <div class="grid grid--cols-1">
-    {% for ingredient in IDX_0.ingredients %}
+  {% if ingredients.size > 0 %}
+    <div class="hr"></div>
     <div class="item">
-      <div class="meta"></div>
-      <div class="content">
-        <span class="value value--small">{{ ingredient }}</span>
-      </div>
+      <span class="value value--small">Ingredients</span>
+      {% for ingredient in ingredients %}
+        <div class="meta">
+          <span class="label">{{ ingredient }}</span>
+        </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
-  <div class="hr"></div>
   {% endif %}
-  {% if IDX_0.instructions.size > 0 %}
-  <div class="grid grid--cols-1">
-    {% for step in IDX_0.instructions %}
+  {% if instructions.size > 0 %}
+    <div class="hr"></div>
     <div class="item">
-      <div class="meta"></div>
-      <div class="content">
-        <span class="label">Step {{ forloop.index }}</span>
-        <span class="value value--small">{{ step }}</span>
-      </div>
+      <span class="value value--small">Instructions</span>
+      {% for instruction in instructions %}
+        <div class="meta">
+          <span class="label">{{ forloop.index }}. {{ instruction }}</span>
+        </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
   {% endif %}
-</div>
-
-<div class="title_bar">
-  <span class="title">Recipe of the Day</span>
+  <div class="title_bar">
+    <span class="title">Recipe of the Day</span>
+  </div>
 </div>

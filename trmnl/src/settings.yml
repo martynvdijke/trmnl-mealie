@@ -5,9 +5,9 @@ dark_mode: 'no'
 static_data: ''
 polling_verb: get
 framework_version: 2.3.7
-serverless_language:
-polling_url: "{{url}}/api/trmnl/recipe-of-the-day"
-polling_headers: ''
+serverless_language: python
+polling_url: "{{url}}/api/recipes?perPage=100"
+polling_headers: 'Authorization=Bearer {{api_key}}'
 polling_body: ''
 id:
 oauth_enabled: 'false'
@@ -33,10 +33,16 @@ oauth_fixed_expiry_ms: ''
 custom_fields:
 - keyname: url
   field_type: url
-  name: Address of the trmnl-mealie backend
+  name: Address of the Mealie instance
   description: URL
   placeholder: https://mealie.example.com
   help_text: Please include http:// or https://
+- keyname: api_key
+  field_type: text
+  name: Mealie API Key
+  description: API token
+  placeholder: Your Mealie API key
+  help_text: 'Create one in Mealie: User Settings > API Tokens'
 name: Mealie Recipe of the Day
-description: A random recipe from your Mealie instance
+description: 'Random recipe from your Mealie'
 refresh_interval: 1440

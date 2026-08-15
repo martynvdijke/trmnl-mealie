@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/martynvdijke/trmnl-mealie/compare/v1.0.0...v1.0.1) (2026-08-15)
+
+
+### Bug Fixes
+
+* **trmnl:** pin plugin id 443871 ([18f1364](https://github.com/martynvdijke/trmnl-mealie/commit/18f1364fc58d1486c760105f879a4994600012c2))
+
 # 1.0.0 (2026-08-15)
 
 

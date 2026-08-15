@@ -1,0 +1,43 @@
+<div class="layout layout--col gap">
+  {% if IDX_0.image %}
+  <div class="grid grid--cols-1">
+    <img class="image image-cover image-dither rounded" src="{{ trml.plugin_settings.custom_fields_values.url }}{{ IDX_0.image }}" />
+  </div>
+  {% endif %}
+  <div class="item">
+    <div class="meta"></div>
+    <div class="content">
+      <span class="value value--medium">{{ IDX_0.name }}</span>
+    </div>
+  </div>
+  <div class="col col--start gap">
+    {% if IDX_0.total_time %}
+    <div class="item">
+      <div class="meta"></div>
+      <div class="content">
+        <span class="label">Total time - {{ IDX_0.total_time }}</span>
+      </div>
+    </div>
+    {% endif %}
+    {% if IDX_0.servings %}
+    <div class="item">
+      <div class="meta"></div>
+      <div class="content">
+        <span class="label">Servings - {{ IDX_0.servings }}</span>
+      </div>
+    </div>
+    {% endif %}
+    {% if IDX_0.ingredients.size > 0 %}
+    <div class="item">
+      <div class="meta"></div>
+      <div class="content">
+        <span class="label">{{ IDX_0.ingredients.size }} ingredients</span>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="title_bar">
+  <span class="title">Recipe of the Day</span>
+</div>

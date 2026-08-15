@@ -1,0 +1,15 @@
+services:
+  trmnl-mealie:
+    image: martynvandijke/trmnl-mealie:latest
+    container_name: trmnl-mealie
+    environment:
+     - MEALIE_URL=https://mealie.example.com
+     - MEALIE_API_KEY=change-me
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
+      interval: 5s
+      timeout: 10s
+      retries: 3
+    restart: always
